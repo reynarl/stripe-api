@@ -1,5 +1,4 @@
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
-import { useState } from 'react'
 
 const CheckoutForm = () => {
   //hook de stripe, devuelve la conexion de stripe
@@ -15,11 +14,12 @@ const CheckoutForm = () => {
       card: elements.getElement(CardElement)
     })
 
-    if(error){
-      console.log('ERROR',error.message)
+    if(!error){
+      console.log('METODO DE PAGO:', paymentMethod)
+      // const { id } = paymentMethod
     }
-
-    console.log('METODO DE PAGO:', paymentMethod)
+    console.log('ERROR',error.message)
+    
   }
 
   return (
